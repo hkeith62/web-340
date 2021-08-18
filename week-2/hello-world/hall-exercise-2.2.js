@@ -12,8 +12,9 @@ var app = express();              // Calls the express function to start a new e
 
 app.use(function(request, response) {     // Middleware (request handler) that accepts a request and sends a reponse.
 	
-	console.log("In comes a request to: " + request.url);
-	response.end("hello World!");
+  console.log("In comes a request to: " + request.url);
+  response.end("hello World!");
+  
 })
 
 http.createServer(app).listen(8080);     //Starts the server listening on port 8080.
