@@ -15,34 +15,28 @@ app.use(function(request, response, next) {
 	
 	console.log("In comes a request to: " + request.url);   // Logs incoming requests and calls next() to continue to the next middleware in the chain.
 	next();
-	
 });
 
 app.get("/", function(request, response) {      // Request handler is called when a request to the site root is made.
 
-  response.end("Welcome to the homepage!");
-  
+  response.end("Welcome to the homepage!"); 
 });
 
 app.get("/about", function(request, response) {   // Request handler is called when a request to the /about page is made.
 	
-  response.end("Welcome to the about page!");
-  
+  response.end("Welcome to the about page!"); 
 });
 
 app.get("/contact", function(request, response) {
   
-  response.end("Welcome to the contact page");
-  
+  response.end("Welcome to the contact page"); 
 });
 
 app.use(function(request, response) {          // If none of routes above are requested, the user ends here.
 	
   response.statusCode = 404;
   response.end("404");
-  
 });
-
 
 http.createServer(app).listen(8080);          // Starts the server listening on port 8080.
 
