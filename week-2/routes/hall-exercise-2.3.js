@@ -17,12 +17,12 @@ app.use(function(request, response, next) {
 	next();
 });
 
-app.get("/", function(request, response) {      // Request handler is called when a request to the site root is made.
+app.get("/", function(request, response) {      // Request handler is called to resppond when a request to the site root is made.
 
   response.end("Welcome to the homepage!"); 
 });
 
-app.get("/about", function(request, response) {   // Request handler is called when a request to the /about page is made.
+app.get("/about", function(request, response) {   // Request handler is called to respond when a request to the /about page is made.
 	
   response.end("Welcome to the about page!"); 
 });
