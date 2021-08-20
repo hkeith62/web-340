@@ -13,13 +13,22 @@ var path = require("path");
 
 var app = express();     // Calls the express function to start a new express application.
 
-app.set("views", path.resolve(_dirname, "views");  // Tells express that views will be in a folder called views.
+app.use(function(request, response, next) {
+	
+	console.log("In comes a request to: " + request.url);   // Logs incoming requests and calls next() to continue to the next middleware in the chain.
+	next();
+});
+
+app.set("views", path.resolve(__dirname, "views"));  // Tells express that views will be in a folder called views.
 app.set("view engine", "ejs");  // Tells express to use the EJS view engine.
 
 app.get("/", function(request, response) {
 	
-  respnse.render("index", {
-	  message: "Welcome to the home page!"
-  })
-})
+  response.render("index");                 // Passes defined values to index.ejs.
+ 
+});
 
+http.createServer(app).listen(8080, function() {    // Creates a server with an express app and starts it litening on port 8080.  
+  
+  console.log("EJS-Views app started on port 8080.");
+});
