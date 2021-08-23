@@ -24,8 +24,11 @@ app.set("view engine", "ejs");  // Tells express to use the EJS view engine.
 
 app.get("/", function(request, response) {
 	
-  response.render("index");                 // Passes defined values to index.ejs.
- 
+  response.render("index.ejs", {
+	  firstName: "First Name: Keith",             // Passes defined values to index.ejs.
+	  lastName: "Last Name: Hall",
+	  address: "Adress: 1801 Ave. H"
+  });                 
 });
 
 http.createServer(app).listen(8080, function() {    // Creates a server with an express app and starts it litening on port 8080.  
