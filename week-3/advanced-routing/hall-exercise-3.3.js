@@ -3,7 +3,7 @@
 ;   Author: Professor Krasso
 ;   Date: 08/24/2021
 ;   Modified By: Keith Hall
-;   Description: This is an example of hadvanced routing in express.
+;   Description: This is an example of advanced routing in express.
 */
 // Modules to be used in the project.
 var express = require("express");
