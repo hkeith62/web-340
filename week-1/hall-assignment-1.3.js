@@ -1,11 +1,11 @@
-/**
+/*
 ;   Title: WEB 340 –  Node.js
 ;   Author: Professor Krasso
 ;   Date: 08/14/2021
 ;   Modified By: Keith Hall
 ;   Description: This is an example of how to require modules/packages in Node.
 */
-var url = require("url"); /** This takes the name of the module as a string argument and returns the module as an object. 
+var url = require("url"); /* This takes the name of the module as a string argument and returns the module as an object. 
                            ;  The object with the parse function attached is put inside the url variable.
 						  */
 var parsedURL = url.parse("https://github.com/profile?name=hall"); // Uses the parse function of the module and puts the result in the parsedURL variable.

@@ -1,4 +1,4 @@
-/**
+/*
 ;   Title: WEB 340 –  Node.js
 ;   Author: Professor Krasso
 ;   Date: 08/19/2021
@@ -31,7 +31,7 @@ app.get("/", function(request, response) {
   });                 
 });
 
-http.createServer(app).listen(8080, function() {    // Creates a server with an express app and starts it litening on port 8080.  
+http.createServer(app).listen(8080, function() {    // Creates a server and starts it listening on port 8080.  
   
   console.log("EJS-Views app started on port 8080.");
 });

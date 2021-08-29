@@ -1,4 +1,4 @@
-/**
+/*
 ;   Title: WEB 340 –  Node.js
 ;   Author: Professor Krasso
 ;   Date: 08/17/2021
@@ -17,7 +17,7 @@ app.use(function(request, response, next) {
 	next();
 });
 
-app.get("/", function(request, response) {      // Request handler is called to resppond when a request to the site root is made.
+app.get("/", function(request, response) {      // Request handler is called to respond when a request to the site root is made.
 
   response.end("Welcome to the homepage!"); 
 });
