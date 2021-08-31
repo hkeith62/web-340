@@ -21,7 +21,7 @@ app.use(logger("short")); // Tell Node to use morgan middleware.
 ; Request to the site route is mapped to a request handler.
 ; A regular expression is used to require an integer value.;
 */
-app.get(/(\d+)$/, function(request, response) {
+app.get(/^\/users\/(\d+)$/, function(request, response) {
 	var employeeId = parseInt(request.params[0], 10);     
 	response.render("index", {                              
 		employeeId: employeeId                           
