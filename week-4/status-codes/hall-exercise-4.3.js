@@ -13,7 +13,7 @@ var app = express();     // creates an express application and puts it inside th
 app.use(logger("dev")); // Tell Node to use morgan middleware.
 
 app.get("/not-found", function(request, response) {  
-    response.status(404);                         // Get request "not found" will return the appropriate jason object.
+    response.status(404);                         // Get request "not found" will return the appropriate json object.
     response.json({
         error: "Page not found."                  
     });
