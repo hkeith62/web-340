@@ -31,7 +31,7 @@ app.get("/about", function(request, response) {       // Request handler is call
 	});
 });
 
-app.get("/about", function(request, response) {       // Request handler is called to respond when a request to the /about page is made.
+app.get("/about", function(request, response) {       // Request handler is called to respond when a request to the /contact page is made.
 	response.render("contact", {
 		title: "Contact Us"
 	});
