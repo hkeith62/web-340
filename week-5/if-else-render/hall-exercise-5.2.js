@@ -19,7 +19,7 @@ app.use(logger("short"));   // Tells Node to use morgan middleware.
 
 var composers =["Beethoven", "Bach", "Mozart", "Schoenberg"];
 
-app.get("/", function(request, response){   // Express renders a response based on what is entered for response.type
+app.get("/", function(request, response){   // Express renders a response based on what is entered for (response.type).
     response.render("index",{
         names: composers  //responds with composers array in ejs.
     });
