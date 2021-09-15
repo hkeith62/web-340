@@ -21,13 +21,13 @@ app.use(logger("short"));
 
 app.get("/", function(request, response){
     response.render("index", {
-        title: "Home Page"
+        title: "Employee Records Management"
     });
 });
 
 app.get("/about", function(request, response) {       // Request handler is called to respond when a request to the /about page is made.
 	response.render("about", {
-		title: "About"
+		title: "About Us"
 	});
 });
 
