@@ -1,0 +1,149 @@
+/**
+    Title: WEB 231 – My Portfolio Website
+    Author: Keith Hall
+    Date: 05/30/2021
+    Description: This is the css mark up for my portfolio website. 
+*/
+* {
+    font-family: 'Poppins', Verdana, Arial, sans-serif;
+    margin: 0;
+    box-sizing: border-box;
+}
+h1 {
+    text-align: center;  
+}
+/* The hamburger (3 line) menu. */
+.the-hamburger {         
+    float: right;
+    padding: 19px 32px 0;
+    margin-right: 58px;
+}
+.the-hamburger a {
+    color: white;
+}
+.the-hamburger a:hover {
+    color: #69F483;
+}
+/* Navigation styling starts here. */
+.nav-container {
+    max-width: 100%;       
+    height: 70px;
+    background-color: #094514; 
+    text-align: right; /* Aligns navigation text to the right of the page. */
+}
+.nav-container li {
+    display: inline-block;
+    padding: 20px 10px;  /* This spreads (li) nav menu links and centers them horizontally. */
+    margin-right: 7px;
+} 
+.nav-container li a {
+    color: white;
+    font-family:  'Poppins', Verdana, Arial, sans-serif;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    word-spacing: 2px;
+}
+.nav-container li a:hover {
+    color: #69F483;
+    text-decoration: none;
+    border-bottom: 3px solid #69F483; 
+}
+.nav-container li a:active {
+    color: #F7E154;
+}
+/* End navigation. */
+
+/*Start content container */
+.content-container {
+    margin-top: 50px;
+}
+#logo {
+    color: white;
+    float: left;
+    border: 1px solid white;
+    margin-top: 15px;
+    margin-left: 60px;
+    text-align: center;
+}
+ .divider {
+	width: 100%;
+	height: 200px;
+	text-align: center;                                     
+	bottom: 0;
+	margin-bottom: 140px;
+	padding: 8px 0;  
+    background-color: #094514;
+ } 
+ .divider-text {
+    margin-top: 55px;
+    color: white;	
+ }
+/* Footer styling starts here. */
+.card-contact {
+    margin-left: -90px;  /* Adjusts width of footer card and center entire content. */
+	margin-top: 10px;
+	width: 279px;
+	height: 148px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+	background: white;
+}
+#footer-container {
+	 width: 100%;
+	 background-color: #094514;
+	 padding-bottom: 4rem;
+ }
+  #footer {
+	width: 90%;
+	height: 200px;                                   
+    margin-left: 175px;
+	padding-top: 64px; 	
+    background-color: #094514;
+	justify-content: center;
+	display: flex;
+	flex-wrap: wrap;
+  }
+  /* Footer content sections. */
+  .footer-title {
+    margin-bottom: 35px;
+    color: white;
+}
+  .footer-lists {
+	display: flex;
+	flex-direction: column;
+	text-decoration: none;
+    margin-right: 4rem;
+	padding-right: 6%;  /* Creates equal spacing between footer heading and lists. */
+	color: #b2b2b2;
+	font-weight: 700;
+	font-family: "Poppins", Verdana, Arial, sans-serif;
+  }
+  /* Footer links. */
+  .footer-lists a {
+	  color: white;
+	  font-family: "Open Sans", Verdana, Arial, sans-serif;
+	  font-weight:400;
+	  line-height: 2.85;
+	  font-size: 12.80px;
+	  letter-spacing: .2px;
+	  padding: 3px;
+	  
+  }
+  .footer-lists a:hover {
+	  color: #69F483;
+	  text-decoration: none;
+  }
+  #copy-right {
+	  padding-bottom: 22px;
+	  padding-top: 105px;
+	  text-align: center;
+	  background-color: #094514;
+  }
+  #copy-right span {
+	 color: white;
+	 font-family: "Poppins", Verdana, Arial, sans-serif;
+	 font-size: 12.80px;
+  }
+  
+   

@@ -17,6 +17,11 @@ var app = express();  // creates an express application and puts it inside the a
 app.set("views", path.resolve(__dirname, "views"));
 app.set("view engine", "ejs");
 
+/* using app.use to serve up static CSS files in public/assets/ folder.
+   app.use("/route", express.static("foldername")); 
+   */
+app.use("/public", express.static("public"));
+
 app.use(logger("short"));
 
 app.get("/", function(request, response){
@@ -31,7 +36,7 @@ app.get("/about", function(request, response) {       // Request handler is call
 	});
 });
 
-app.get("/about", function(request, response) {       // Request handler is called to respond when a request to the /contact page is made.
+app.get("/contact", function(request, response) {       // Request handler is called to respond when a request to the /contact page is made.
 	response.render("contact", {
 		title: "Contact Us"
 	});
