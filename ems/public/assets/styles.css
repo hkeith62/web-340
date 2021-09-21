@@ -9,10 +9,15 @@
     margin: 0;
     box-sizing: border-box;
 }
-h1 {
-    text-align: center;  
+#logo {
+    color: white;
+    float: left;
+    border: 1px solid white;
+    margin-top: 15px;
+    margin-left: 60px;
+    text-align: center;
 }
-/* The hamburger (3 line) menu. */
+/* Top hamburger (3 line) menu. */
 .the-hamburger {         
     float: right;
     padding: 19px 32px 0;
@@ -58,13 +63,8 @@ h1 {
 .content-container {
     margin-top: 50px;
 }
-#logo {
-    color: white;
-    float: left;
-    border: 1px solid white;
-    margin-top: 15px;
-    margin-left: 60px;
-    text-align: center;
+h1 {
+    text-align: center;  
 }
  .divider {
 	width: 100%;
@@ -121,29 +121,28 @@ h1 {
   }
   /* Footer links. */
   .footer-lists a {
-	  color: white;
-	  font-family: "Open Sans", Verdana, Arial, sans-serif;
-	  font-weight:400;
-	  line-height: 2.85;
-	  font-size: 12.80px;
-	  letter-spacing: .2px;
-	  padding: 3px;
-	  
+	color: white;
+	font-family: "Open Sans", Verdana, Arial, sans-serif;
+	font-weight:400;
+	line-height: 2.85;
+	font-size: 12.80px;
+	letter-spacing: .2px;
+	padding: 3px;
   }
   .footer-lists a:hover {
-	  color: #69F483;
-	  text-decoration: none;
+	color: #69F483;
+	text-decoration: none;
   }
   #copy-right {
-	  padding-bottom: 22px;
-	  padding-top: 105px;
-	  text-align: center;
-	  background-color: #094514;
+	padding-bottom: 22px;
+    padding-top: 105px;
+	text-align: center;
+	background-color: #094514;
   }
   #copy-right span {
-	 color: white;
-	 font-family: "Poppins", Verdana, Arial, sans-serif;
-	 font-size: 12.80px;
+	color: white;
+	font-family: "Poppins", Verdana, Arial, sans-serif;
+	font-size: 12.80px;
   }
   
    
