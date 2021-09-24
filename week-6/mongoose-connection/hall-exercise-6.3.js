@@ -15,7 +15,7 @@ var mongoose = require("mongoose");
 var mongoDB ="mongodb+srv://new-user_62:34bx4y6ka@buwebdev-cluster-1.phrms.mongodb.net/test";
 
 mongoose.connect(mongoDB, {
-  useNewUrlParser: true    // New MongoDb instance
+  useMongoClient: true    // New MongoDb instance
 });
 
 mongoose.Promise = global.Promise;
