@@ -3,9 +3,9 @@
 ;   Author: Professor Krasso
 ;   Date: 09/21/2021
 ;   Modified By: Keith Hall
-;   Description: This is an example of a simple TDD test case using Node/Mocha- exercise 7.2. 
+;   Description: This is a TDD example using Mocha to access a simple test case- exercise 7.2. 
 */
-var assert = require("assert"); // Defines if a given expression is true or not.
+var assert = require("assert"); // Node assert function that tests if a given expression is true or not.
 
 //Function tested 
 describe("String#split", function() {  
