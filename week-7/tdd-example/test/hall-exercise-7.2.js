@@ -10,7 +10,7 @@ var assert = require("assert"); // Node assert function that tests if a given ex
 //Function tested 
 describe("String#split", function() {  
     it("should return an array of fruits", function() {
-        assert(Array.isArray('Apple, Orange, Mango'.split(','))); // Tests if string (apple, orange, mago).split (',') returns an array of fruits.
+        assert(Array.isArray('Apple, Orange, Mango'.split(','))); // Tests if string (apple, orange, mango).split (',') returns an array of fruits.
     });
 });
  
