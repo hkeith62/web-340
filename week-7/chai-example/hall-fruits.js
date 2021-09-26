@@ -3,11 +3,11 @@
 ;   Author: Professor Krasso
 ;   Date: 08/27/2021
 ;   Modified By: Keith Hall
-;   Description: This function servers as the unit test case for exercises 7.2-TDD and 7.3-Mocha and Chai. 
+;   Description: This is a file containing the code/function to be tested in exercise 7.3.  
 */
-// Fruit function that splits a comma separated string into an array.   
+// Function that splits a comma separated string into an array.   
 function fruits(str) {
-    return str.split(',');  
+    return str.split(',');     // Tests if str('apple, orange, mango').split returns an array of fruits.
    }
 
-   module.exports = fruits;  // Exports a default (one) value.
+   module.exports = fruits;   // Exports a default (one) value.
