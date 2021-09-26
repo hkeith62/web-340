@@ -14,5 +14,4 @@ describe("fruits", function() {
         var f = fruits('Apple, Orange, Mango');
         assert(Array.isArray(f));                        // Tests if function returns an array of fruits.
     });
-    });
 });
