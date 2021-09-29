@@ -2,6 +2,44 @@
     Title: WEB 231 – Enterprise JavaScript I
     Author: Professor Krasso
     Date: 09/07/2021
-    Modified By: Keith Hall (With Bootstrap)
+    Modified By: Keith Hall 
     Description: This is the data entry page.  
 -->
+<!DOCTYPE html>
+<html lang="en"> 
+<%- include ("header.ejs") %>
+<body> 
+<%- include ("navbar.ejs") %>
+<div role="main" class="container" style="width:60%; height:560px">
+    <br><br>
+    <h1>New Employee Entry</h1>
+    <br/>
+    <div class="row">
+        <div style="background-color:green;"> 
+	        <div class= "alert alert-success" role= "alert">
+	           
+              <form method="post" action="/process">
+                <div class="form-group" style="height:100px"><br>
+                  <label for="txtName">Name:</label>
+                  <input type="text" class="form-control" id="txtName" name="txtName" />
+                </div>
+                <div class="form-group">
+                  <!-- CSRF token -->
+                  <input name="_csrf" value="<%= csrfToken %>" type="hidden" />
+                  <button type="submit" class="btn btn-primary" style="float:right">Submit</button> 
+                </div>
+                <br><br>
+              </form>
+		    </div>
+	    </div>
+</div>
+
+       
+
+    <a href="/">Return Home</a>
+  </div>
+
+<%- include ("footer.ejs") %>
+<%- include ("scripts.ejs") %>
+</body>
+</html> 

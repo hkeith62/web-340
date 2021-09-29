@@ -5,6 +5,9 @@
 ;   Modified By: Keith Hall
 ;   Description: This is server file for the employee records app.
 */
+/*jslint node: true */
+"use strict";
+
 // Calls all modules to be used in the employee records app project.
 var express = require("express");
 var http = require("http");
@@ -12,8 +15,12 @@ var mongoose = require("mongoose");
 var path = require("path");
 var logger = require("morgan");
 var helmet = require("helmet");
-
+var bodyParser = require("body-parser");
+var cookieParser = require("cookie-parser");
+var csrf = require("csurf");
 var Employee = require("./models/employee");
+
+// Database connection
 var mongoDB = "mongodb+srv://new-user_62:34bx4y6ka@buwebdev-cluster-1.phrms.mongodb.net/test";    // Database connection string.
 
 mongoose.connect(mongoDB, {
@@ -32,13 +39,31 @@ db.once("open", function () {
 
     console.log("Application connected to mLab MongoDB instance");
 });
-                                
+
+// CSRF Protection
+var csrfProtection = csrf({cookie: true});
+
 var app = express();  // Creates an express application and puts it inside the app variable.
 
-// Using app.use to serve up static CSS files in public folder.
+// Serve up static CSS files in public folder.
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(logger("short"));
+
+app.use(bodyParser.urlencoded ({
+    extended: true
+}));
+
+app.use(cookieParser());
+
+app.use(csrfProtection);
+
+app.use(function (request, response, next) {
+    var token = request.csrfToken();
+    response.cookie("CSRF-TOKEN", token);
+    response.locals.csrfToken = token;
+    next();
+});
 
 app.use(helmet.xssFilter());  // Xss header security
 
@@ -53,7 +78,6 @@ app.set("views", path.resolve(__dirname, "views"));   // Tells Express that the 
 app.set("view engine", "ejs");  // Tells Express to use the EJS view engine.
 
 // Request handlers are called to respond when a request to the home/about/contact pages are made.
-
 app.get("/", function (request, response) {             
     response.render("index", {
         title: "Employee Records Management"
@@ -62,14 +86,25 @@ app.get("/", function (request, response) {
 
 app.get("/about", function (request, response) {        
     response.render("about", {
-	title: "About Us"
-	});
+        title: "About Us"
+    });
 });
 
 app.get("/contact", function (request, response) {        
-	response.render("contact", {
-		title: "Contact Us"
-	});
+    response.render("contact", {
+        title: "Contact Us"
+  });
+});
+
+app.get("/new", function (request, response) {
+    response.render("new", {
+        title: "New Employee Entry"
+    });
+});
+
+app.post("/process", function (req, res) {
+    console.log(req.body.txtName);
+    res.redirect("/");
 });
 
 http.createServer(app).listen(8080, function () {                // Starts the server listening on port 8080.  
