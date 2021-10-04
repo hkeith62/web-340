@@ -20,7 +20,7 @@ var cookieParser = require("cookie-parser");
 var csrf = require("csurf");
 var Employee = require("./models/employee");
 
-// Database connection
+// Database connection string
 var mongoDB = "mongodb+srv://new-user_62:34bx4y6ka@buwebdev-cluster-1.phrms.mongodb.net/test";    // Database connection string.
 
 mongoose.connect(mongoDB, {
@@ -48,30 +48,28 @@ var app = express();  // Creates an express application and puts it inside the a
 // Serve up static CSS files in public folder.
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use(logger("short"));
+// Dependency libraries
+app.use(logger("short")); // Morgan logger
 
+// Body parser
 app.use(bodyParser.urlencoded ({
     extended: true
 }));
-
+// Cookie parser
 app.use(cookieParser());
 
+// CSRF protection
 app.use(csrfProtection);
 
+// Helmet header security
+app.use(helmet.xssFilter());   
+
+// Intercepts incoming requests and adds a CSRF token to the response.
 app.use(function (request, response, next) {
     var token = request.csrfToken();
     response.cookie("CSRF-TOKEN", token);
     response.locals.csrfToken = token;
     next();
-});
-
-app.use(helmet.xssFilter());  // Xss header security
-
-// Placeholder model for a new document.
-var employee = new Employee({
-
-    firstName: "John",
-    lastName: "Doe"
 });
 
 app.set("views", path.resolve(__dirname, "views"));   // Tells Express that the 'views files are in the views directory.
@@ -98,17 +96,30 @@ app.get("/contact", function (request, response) {
 
 app.get("/new", function (request, response) {
     response.render("new", {
-        title: "New Employee Entry"
+        title: "New Employee Entry Form"
     });
 });
 
-app.post("/process", function (req, res) {
-    console.log(req.body.txtName);
-    res.redirect("/");
+app.get("/list", function(request, response) {
+    Employee.find({}, function(error, employees) {
+       if (error) throw error;
+       response.render("list", {
+           title: "Employee List",
+           employees: employees
+       });
+    });
 });
 
+app.post("/process", (req, res) => {
+    var myData = new Employee(req.body);
+    myData.save()
+      .then(item => {
+        res.send("item saved to database");
+      })
+      .catch(err => {
+        res.status(400).send("unable to save to database");
+      });
+  });
 http.createServer(app).listen(8080, function () {                // Starts the server listening on port 8080.  
     console.log("Application started on port 8080!");
 });
-
-

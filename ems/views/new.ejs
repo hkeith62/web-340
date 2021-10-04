@@ -12,17 +12,18 @@
 <%- include ("navbar.ejs") %>
 <div role="main" class="container" style="width:60%; height:560px">
     <br><br>
-    <h1>New Employee Entry</h1>
+    <h1 style="margin-left:-40px">New Employee Entry Form</h1>
     <br/>
     <div class="row">
         <div style="background-color:green;"> 
 	        <div class= "alert alert-success" role= "alert">
-	           
               <form method="post" action="/process">
-                <div class="form-group" style="height:100px"><br>
-                  <label for="txtName">Name:</label>
-                  <input type="text" class="form-control" id="txtName" name="txtName" />
+                <div class="form-group" style="height:100px"><br />
+                  <label for="txtName">Enter Employee Name:</label><br /><br>
+                  <input type="text" id="txtName" name="firstName" class="form-control" placeholder="Enter first name..." required><br />
+                  <input type="text" id="txtName" name="lastName" class="form-control" placeholder="Enter last name..." required>
                 </div>
+                <br /> <br /> <br />
                 <div class="form-group">
                   <!-- CSRF token -->
                   <input name="_csrf" value="<%= csrfToken %>" type="hidden" />

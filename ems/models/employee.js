@@ -8,17 +8,17 @@
 */
 
 // Require statements.
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+var mongoose = require("mongoose");
+var Schema = mongoose.Schema;
 
 // Define employee schema.
-const employeeSchema = new Schema({
+var employeeSchema = new Schema({
 
     firstName: {type: String, required: true},
     lastName:  {type: String, required: true}
 });
-// Define model  
-const Employee = mongoose.model("Employee", employeeSchema); // Mongoose maps employeeSchema to Employee model.
+// Define model   
+var Employee = mongoose.model("Employee", employeeSchema); // Mongoose maps employeeSchema to Employee model.
 module.exports = Employee;  // Makes this model accessible from other JavaScript files.
 
 /* var nameSchema = new Schema({

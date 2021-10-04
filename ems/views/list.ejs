@@ -5,3 +5,35 @@
     Modified By: Keith Hall (With Bootstrap)
     Description: Tabular view of employee records.  
 -->
+<!DOCTYPE html>
+<html lang="en"> 
+<%- include ("header.ejs") %>
+<body></body>
+<%- include ("navbar.ejs") %>
+<div class="content-container" style="height:555px">  
+<% if (employees.length) { %>
+    <h2 style="margin-left:300px; margin-top:50px">Employee Listing</h2><br />
+    <table class="table table‐hover">
+        <thead class="thead‐dark">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% employees.forEach(function (entry) { %>
+        <tr>
+            <td><%= entry.name %></td>
+        </tr>
+        </tbody>
+        <% }) %>
+    </table>
+    <div id="return"><a href="/new">Add New</a></div>
+    <% } else { %>
+    No entries! <a href="/new">Add one!</a>
+    <% } %>
+</div>
+    <%- include ("footer.ejs") %>
+<%- include ("scripts.ejs") %>
+</body>
+</html>
