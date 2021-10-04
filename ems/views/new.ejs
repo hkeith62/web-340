@@ -2,32 +2,32 @@
     Title: WEB 231 – Enterprise JavaScript I
     Author: Professor Krasso
     Date: 09/07/2021
-    Modified By: Keith Hall 
-    Description: This is the data entry page.  
+    Modified By: Keith Hall
+    Description: This is the data entry page.
 -->
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <%- include ("header.ejs") %>
-<body> 
+<body>
 <%- include ("navbar.ejs") %>
 <div role="main" class="container" style="width:60%; height:560px">
     <br><br>
     <h1 style="margin-left:-40px">New Employee Entry Form</h1>
     <br/>
     <div class="row">
-        <div style="background-color:green;"> 
+        <div style="background-color:green;">
 	        <div class= "alert alert-success" role= "alert">
               <form method="post" action="/process">
                 <div class="form-group" style="height:100px"><br />
                   <label for="txtName">Enter Employee Name:</label><br /><br>
-                  <input type="text" id="txtName" name="firstName" class="form-control" placeholder="Enter first name..." required><br />
-                  <input type="text" id="txtName" name="lastName" class="form-control" placeholder="Enter last name..." required>
+                  <input type="text" name="firstName" class="form-control" placeholder="Enter first name..." required><br />
+                  <input type="text" name="lastName" class="form-control" placeholder="Enter last name..." required>
                 </div>
                 <br /> <br /> <br />
                 <div class="form-group">
                   <!-- CSRF token -->
                   <input name="_csrf" value="<%= csrfToken %>" type="hidden" />
-                  <button type="submit" class="btn btn-primary" style="float:right">Submit</button> 
+                  <button type="submit" class="btn btn-primary" style="float:right">Submit</button>
                 </div>
                 <br><br>
               </form>
@@ -35,7 +35,7 @@
 	    </div>
 </div>
 
-       
+
 
     <a href="/">Return Home</a>
   </div>
@@ -43,4 +43,4 @@
 <%- include ("footer.ejs") %>
 <%- include ("scripts.ejs") %>
 </body>
-</html> 
+</html>

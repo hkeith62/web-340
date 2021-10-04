@@ -34,8 +34,8 @@ mongoose.Promise = global.Promise;
 var db = mongoose.connection;  // Database variable to hold connection.
 
 // Error handling
-db.on("error", console.error.bind(console, "MongoDB connected error:")); 
-db.once("open", function () {      
+db.on("error", console.error.bind(console, "MongoDB connected error:"));
+db.once("open", function () {
 
     console.log("Application connected to mLab MongoDB instance");
 });
@@ -62,7 +62,7 @@ app.use(cookieParser());
 app.use(csrfProtection);
 
 // Helmet header security
-app.use(helmet.xssFilter());   
+app.use(helmet.xssFilter());
 
 // Intercepts incoming requests and adds a CSRF token to the response.
 app.use(function (request, response, next) {
@@ -76,19 +76,19 @@ app.set("views", path.resolve(__dirname, "views"));   // Tells Express that the 
 app.set("view engine", "ejs");  // Tells Express to use the EJS view engine.
 
 // Request handlers are called to respond when a request to the home/about/contact pages are made.
-app.get("/", function (request, response) {             
+app.get("/", function (request, response) {
     response.render("index", {
         title: "Employee Records Management"
     });
 });
 
-app.get("/about", function (request, response) {        
+app.get("/about", function (request, response) {
     response.render("about", {
         title: "About Us"
     });
 });
 
-app.get("/contact", function (request, response) {        
+app.get("/contact", function (request, response) {
     response.render("contact", {
         title: "Contact Us"
   });
@@ -101,25 +101,40 @@ app.get("/new", function (request, response) {
 });
 
 app.get("/list", function(request, response) {
-    Employee.find({}, function(error, employees) {
-       if (error) throw error;
-       response.render("list", {
-           title: "Employee List",
-           employees: employees
-       });
-    });
-});
-
-app.post("/process", (req, res) => {
-    var myData = new Employee(req.body);
-    myData.save()
-      .then(item => {
-        res.send("item saved to database");
-      })
-      .catch(err => {
-        res.status(400).send("unable to save to database");
-      });
+  Employee.find({}, function(error, employees) {
+     if (error) throw error;
+     response.render("list", {
+         title: "Employee List",
+         employees: employees
+     });
   });
-http.createServer(app).listen(8080, function () {                // Starts the server listening on port 8080.  
+});
+app.post("/process", function (req, res)  {
+
+  // create a new employee model instance
+  var newEmployee = new Employee({
+    firstName: "John",
+    lastName: "Doe"
+  });
+
+  // get the request's form data
+  var employeeName = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName
+  };
+  console.log(employeeName);
+    // save
+    newEmployee.save(function(err) {
+      if (err) {
+        console.log(err);
+        throw err;
+      } else {
+        console.log(newEmployee + ' saved successfully!');
+        res.redirect('/list');
+      }
+    });
+  });
+
+http.createServer(app).listen(8080, function () {                // Starts the server listening on port 8080.
     console.log("Application started on port 8080!");
 });
