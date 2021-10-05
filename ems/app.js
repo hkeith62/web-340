@@ -7,7 +7,6 @@
 */
 /*jslint node: true */
 "use strict";
-
 // Calls all modules to be used in the employee records app project.
 var express = require("express");
 var http = require("http");
@@ -100,26 +99,31 @@ app.get("/new", function (request, response) {
     });
 });
 
-app.get("/list", function(request, response) {
-  Employee.find({}, function(error, employees) {
-     if (error) throw error;
-     response.render("list", {
-         title: "Employee List",
-         employees: employees
-     });
-  });
+app.get('/list', function (req, res) {
+    Employee.find({}, function (err, employees) {
+        if (err) {
+            console.log(err);
+            throw err;
+        } else {
+            console.log(employees);
+            res.render('list', {
+                title: 'Employee List',
+                employees: employees
+            });
+        }
+    });
 });
-app.post("/process", function (req, res)  {
-  var newEmployee = new Employee(req.body);
-  newEmployee.save(function(err) {
-    if (err) {
-      console.log("Validation Failed");
-      throw err;
-    } else {
-      console.log(newEmployee + ' saved successfully!');
-      res.redirect('/list');
-    }
-  });
+app.post("/process", function (req, res) {
+    var newEmployee = new Employee(req.body);
+    newEmployee.save(function (err) {
+        if (err) {
+            console.log("Validation Failed");
+            throw err;
+        } else {
+            console.log(newEmployee + ' saved successfully!');
+            res.redirect('/list');
+        }
+    });
 });
 
 http.createServer(app).listen(8080, function () {                // Starts the server listening on port 8080.
