@@ -10,7 +10,7 @@
 <%- include ("header.ejs") %>
 <body>
 <%- include ("navbar.ejs") %>
-<div role="main" class="container" style="width:60%; height:560px">
+<div role="main" class="container" style="width:50%; height:560px">
     <br><br>
     <h1 style="margin-left:-40px">New Employee Entry Form</h1>
     <br/>
@@ -18,16 +18,17 @@
         <div style="background-color:green;">
 	        <div class= "alert alert-success" role= "alert">
               <form method="post" action="/process">
-                <div class="form-group" style="height:100px"><br />
-                  <label for="txtName">Enter Employee Name:</label><br /><br>
-                  <input type="text" name="firstName" class="form-control" placeholder="Enter first name..." required><br />
-                  <input type="text" name="lastName" class="form-control" placeholder="Enter last name..." required>
+                <div style="padding-top:10px"><br />
+                  <label for="firstName">First Name:</label>
+                  <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Enter first name..." required /><br />
+                  <label for="lastName">First Name:</label>
+                  <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Enter last name..." required />
                 </div>
                 <br /> <br /> <br />
                 <div class="form-group">
                   <!-- CSRF token -->
-                  <input name="_csrf" value="<%= csrfToken %>" type="hidden" />
-                  <button type="submit" class="btn btn-primary" style="float:right">Submit</button>
+                  <input name="_csrf" value="<%= csrfToken %>" type="hidden" /><br><br>
+                  <button type="submit" class="btn btn-primary" style="float:right;margin-top: -70px">Submit</button>
                 </div>
                 <br><br>
               </form>

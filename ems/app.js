@@ -110,30 +110,17 @@ app.get("/list", function(request, response) {
   });
 });
 app.post("/process", function (req, res)  {
-
-  // create a new employee model instance
-  var newEmployee = new Employee({
-    firstName: "John",
-    lastName: "Doe"
+  var newEmployee = new Employee(req.body);
+  newEmployee.save(function(err) {
+    if (err) {
+      console.log("Validation Failed");
+      throw err;
+    } else {
+      console.log(newEmployee + ' saved successfully!');
+      res.redirect('/list');
+    }
   });
-
-  // get the request's form data
-  var employeeName = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName
-  };
-  console.log(employeeName);
-    // save
-    newEmployee.save(function(err) {
-      if (err) {
-        console.log(err);
-        throw err;
-      } else {
-        console.log(newEmployee + ' saved successfully!');
-        res.redirect('/list');
-      }
-    });
-  });
+});
 
 http.createServer(app).listen(8080, function () {                // Starts the server listening on port 8080.
     console.log("Application started on port 8080!");
