@@ -3,5 +3,40 @@
     Author: Professor Krasso
     Date: 09/07/2021
     Modified By: Keith Hall (With Bootstrap)
-    Description: This is a read-only page of selected employee details.  
+    Description: Tabular view of employee records.
 -->
+<!DOCTYPE html>
+<html lang="en">
+  <%- include ("header.ejs") %>  <!--Header module-->
+
+  <body>
+    <%- include ("navbar.ejs") %>  <!--Navigation module-->
+    <div role="main" class="container" style="width: 50%;">
+      <br /><br />
+
+      <h2>Employee Details</h2>
+      <br />
+      <div>
+        <div class="form-group">
+          <label for="txtName">Name:</label>
+          <!--Input not clickable but value (employee name) is 'read only'-->
+          <input
+            type="text"
+            class="form-control"
+            id="txtName"
+            readonly
+            value="<%= employee[0].name %>"
+            name="txtName"
+          />
+        </div>
+      </div>
+
+      <br /><br />
+
+      <a href="/">&larr; Return Home</a>
+    </div>
+
+    <%- include ("footer.ejs") %>   <!--Footer module-->
+    <%- include ("scripts.ejs") %> <!--Scripts module-->
+  </body>
+</html>

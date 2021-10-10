@@ -73,6 +73,7 @@ app.use(function (request, response, next) {
 
 app.set("views", path.resolve(__dirname, "views"));   // Tells Express that the 'views files are in the views directory.
 app.set("view engine", "ejs");  // Tells Express to use the EJS view engine.
+app.set('port', process.env.PORT || 8080);
 
 // Request handlers are called to respond when a request to the home/about/contact pages are made.
 app.get("/", function (request, response) {
@@ -115,7 +116,7 @@ app.get('/list', function (req, res) {
 });
 app.post("/process", function (req, res) {
     var newEmployee = new Employee(req.body);
-    newEmployee.save(function (err) {
+    newEmployee.save(function (err) {             // Save new employee first and last name to mongodb.
         if (err) {
             console.log("Validation Failed");
             throw err;
@@ -126,6 +127,27 @@ app.post("/process", function (req, res) {
     });
 });
 
-http.createServer(app).listen(8080, function () {                // Starts the server listening on port 8080.
-    console.log("Application started on port 8080!");
+app.get('/view', function (request, response) {   // Get views page
+    var queryName = request.params["queryName"];      // queries string of request object.
+    Employee.find({'name': queryName}, function (error, employees) {  //Selects mongodb record (employee name) by queryName.
+        if (error) {
+            console.log('Error Occurred');
+            throw error;
+        } else {
+            console.log(queryName + "Record for");   // If no error, display record in the console.
+
+            if (employees.length > 0) {               // If record length is greater than 0, redirects to views page.
+                response.render('view', {
+                    title: "Employee Record",
+                    employee: employees
+                });
+            } else {
+                response.redirect('/list');
+            }
+        }
+    });
+});
+
+http.createServer(app).listen(app.get('port'), function () {
+    console.log('Application started on port ' + app.get('port'));
 });

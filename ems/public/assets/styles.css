@@ -11,6 +11,9 @@ body {
     box-sizing: border-box;
     width: 100%;
 }
+a, a:hover, a:active, a:visited, a:focus {
+    text-decoration:none;
+}
 #logo {
     color: white;
     float: left;
@@ -81,6 +84,17 @@ h1 {
 .form-field {
 	padding: 14px;
 }
+/* Entry form button */
+.form-group button {
+    background-color: #094514;
+    border: none;
+    color: #69F483;
+}
+.form-group button:hover {
+    background-color:  #69F483;
+    border: none;
+    color:  #094514;
+}
 /* Book table styles. */
 .table {
     border-collapse: collapse;
@@ -101,7 +115,7 @@ h1 {
 }
 .table tr:hover {
     background-color: #69F483;
-    color: #4F3674;
+    color: #094514;
     cursor: pointer;
 }
 .card {
@@ -138,7 +152,7 @@ h1 {
  }
 /* Footer styling starts here. */
 .card-contact {
-    margin-left: -90px;  /* Adjusts width of footer card and center entire content. */
+    margin-left: -20px;  /* Adjusts width of footer card and center entire content. */
 	margin-top: 10px;
 	width: 279px;
 	height: 148px;
@@ -154,7 +168,7 @@ h1 {
   #footer {
 	width: 90%;
 	height: 200px;
-    margin-left: 138px;
+    margin-left: 142px;
 	padding-top: 64px;
     background-color: #094514;
 	justify-content: center;
@@ -194,7 +208,7 @@ h1 {
 	padding-bottom: 22px;
     padding-top: 105px;
 	text-align: center;
-	background-color: #094514;
+	background-color:  #094514;
   }
   #copy-right span {
 	color: white;
@@ -203,6 +217,34 @@ h1 {
   }
   #return {
       margin-left: 300px;
-      margin-top: -40px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      font-weight: 500;
   }
+  #return a {
+    color:   #094514;
+    padding: 4px;
+  }
+  #return a:hover {
+    text-decoration: none;
+    color: #69F483;
+  }
+  .content-container button {
+    border: none;
+    border-radius: 4px;
+    outline: 0;
+    display: inline-block;
+    padding: 10px 25px;
+    color:  #094514;
+    background-color:  #69F483;
+    text-align: center;
+    cursor: pointer;
+  }
+  .content-container button:hover {
+    background-color:  #094514;
+    color: #69F483;
+  }
+  #return-home-container {
+	margin-left: 594px;
+}
 

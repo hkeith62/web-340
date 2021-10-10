@@ -8,7 +8,6 @@
 ;===========================================
 */
 /*jslint node: true */
-"use strict";
 // Require statements.
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
