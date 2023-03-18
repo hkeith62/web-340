@@ -17,7 +17,7 @@ var helmet = require("helmet");
 var bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
 var csrf = require("csurf");
-var Employee = require("./models/employee");
+var Employee = require("./models/employee");;;;
 
 // Database connection string
 var mongoDB = "mongodb+srv://new-user_62:34bx4y6ka@buwebdev-cluster-1.phrms.mongodb.net/test";    // Database connection string.
@@ -101,19 +101,40 @@ app.get("/new", function (request, response) {
 });
 
 app.get('/list', function (req, res) {
-    Employee.find({}, function (err, employees) {
+    Employee.find({}, function (err, employee) {
         if (err) {
             console.log(err);
             throw err;
         } else {
-            console.log(employees);
+            console.log(employee);
             res.render('list', {
                 title: 'Employee List',
-                employees: employees
+                employees: employee
             });
         }
     });
 });
+app.get('/views', function (request, response) {   // Get views page
+    var queryName = request.params['name'];      // queries string of request object.
+    Employee.find({'name': queryName}, function (error, employee) {  //Selects mongodb record (employee name) by queryName.
+        if (error) {
+            console.log('Error Occurred');
+            throw error;
+        } else {
+            console.log(`Record for ${queryName}`);   // If no error, display record in the console.
+
+            if (employee.length > 0) {               // If record length is greater than 0, redirects to views page.
+                response.render('view', {
+                    title: "Employee Record",
+                    employees: employee
+                });
+            } else {
+                response.redirect('/list');
+            }
+        }
+    });
+});
+
 app.post("/process", function (req, res) {
     var newEmployee = new Employee(req.body);
     newEmployee.save(function (err) {             // Save new employee first and last name to mongodb.
@@ -123,27 +144,6 @@ app.post("/process", function (req, res) {
         } else {
             console.log(newEmployee + ' saved successfully!');
             res.redirect('/list');
-        }
-    });
-});
-
-app.get('/view', function (request, response) {   // Get views page
-    var queryName = request.params["queryName"];      // queries string of request object.
-    Employee.find({'name': queryName}, function (error, employees) {  //Selects mongodb record (employee name) by queryName.
-        if (error) {
-            console.log('Error Occurred');
-            throw error;
-        } else {
-            console.log(queryName + "Record for");   // If no error, display record in the console.
-
-            if (employees.length > 0) {               // If record length is greater than 0, redirects to views page.
-                response.render('view', {
-                    title: "Employee Record",
-                    employee: employees
-                });
-            } else {
-                response.redirect('/list');
-            }
         }
     });
 });
